@@ -1,0 +1,15 @@
+Queries
+--------------
+This pages is used for storing queries on the Mock Store Database to be used in our UI. Queries here will be converted to PHP, and put in the Mock Store Website
+
+Please follow this format:
+
+Context:
+"Queries"
+---------------------------------------
+
+For example: 
+
+Get all customer names:
+"SELECT fName, lName FROM customers;" 
+----------------------------------------
