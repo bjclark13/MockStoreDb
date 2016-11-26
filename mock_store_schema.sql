@@ -22,9 +22,8 @@ CREATE TABLE IF NOT EXISTS `MockDatabase`.`Products` (
   `ProductID` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(70) NULL,
   `Department` VARCHAR(45) NULL,
-  `Productscol` VARCHAR(45) NULL,
+  `Notes` VARCHAR(255) NULL,
   PRIMARY KEY (`ProductID`));
-
 
 -- -----------------------------------------------------
 -- Table `MockDatabase`.`Departments`
@@ -43,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `MockDatabase`.`Customers` (
   `CustomerID` INT NOT NULL AUTO_INCREMENT,
   `FName` VARCHAR(35) NULL,
   `LName` VARCHAR(35) NULL,
-  `Customerscol` VARCHAR(45) NULL,
+  `Notes` VARCHAR(45) NULL,
   PRIMARY KEY (`CustomerID`));
 
 
