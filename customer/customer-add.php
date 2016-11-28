@@ -2,12 +2,6 @@
 
 	include("../header.php");
 
-	// TODO: Use global variable
-	include("../database/db.php");
-	$db = new Database();
-
-	var_dump($_POST);
-
 	if(isset(	$_POST['FName'] ))
 		$fname = $_POST['FName'];
 	else die("No First Name provided");

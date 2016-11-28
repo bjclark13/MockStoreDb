@@ -16,23 +16,31 @@ CREATE SCHEMA IF NOT EXISTS `MockDatabase` ;
 USE `MockDatabase` ;
 
 -- -----------------------------------------------------
+-- Table `MockDatabase`.`Departments`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MockDatabase`.`Departments` (
+  `DepartmentID` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  `Description` VARCHAR(255) NULL,
+  `SupervisorID` INT NULL,
+  PRIMARY KEY (`DepartmentID`));
+
+-- -----------------------------------------------------
 -- Table `MockDatabase`.`Products`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `MockDatabase`.`Products` (
   `ProductID` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(70) NULL,
-  `Department` VARCHAR(45) NULL,
+  `DepartmentID` INT NULL,
+  `InStock` INT NULL,
+  `Price` DECIMAL(10,2) NULL,
   `Notes` VARCHAR(255) NULL,
-  PRIMARY KEY (`ProductID`));
-
--- -----------------------------------------------------
--- Table `MockDatabase`.`Departments`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `MockDatabase`.`Departments` (
-  `Name` VARCHAR(45) NOT NULL,
-  `Description` VARCHAR(255) NULL,
-  `SupervisorID` INT NULL,
-  PRIMARY KEY (`Name`));
+  PRIMARY KEY (`ProductID`),
+  CONSTRAINT `DepartmentID`
+    FOREIGN KEY (`DepartmentID`)
+    REFERENCES `MockDatabase`.`Departments` (`DepartmentID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------

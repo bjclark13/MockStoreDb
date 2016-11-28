@@ -17,7 +17,7 @@ class Database {
     */
     function getCustomers($where = NULL) {
 
-    	$SQL = "SELECT * FROM Customers";
+    	$SQL = "SELECT * FROM Customers ORDER BY LName";
     	$statement = $this->runQuery($SQL);
 
     	return $statement;
@@ -29,7 +29,7 @@ class Database {
     */
     function getCustomerByID($id) {
     	$SQL = "SELECT * FROM Customers WHERE CustomerID = ?";
-    	$results = $this->runQuery($SQL);
+    	$results = $this->runQuery($SQL, array($id));
 
     	return $results;
     }
@@ -51,9 +51,10 @@ class Database {
     function deleteCustomer($id) {
   //  	$this->pdo->startTransaction();
 
-    	$SQL = "DELETE FROM Customers WHERE CustomerID = ?";
+    	$SQL = "DELETE FROM Customers WHERE CustomerID = ? ";
 
     	$result = $this->runQuery($SQL, $id);
+
     	// if($result == false)
     	// 	$this->pdo->rollback();
 
@@ -65,6 +66,46 @@ class Database {
 
     //	$this->pdo->commit();
     	return true;
+    }
+
+    function getDepartments($where = null) {
+    	$SQL = "SELECT * FROM Departments ORDER BY Name";
+    	$result = $this->runQuery($SQL);
+    	return $result;
+    } 
+
+    function getProducts($where = null) {
+    	$SQL = "SELECT * FROM Products ORDER BY Name";
+    	$result = $this->runQuery($SQL);
+    	return $result;
+    } 
+
+    function getDepartmentByID($id) {
+    	$SQL = "SELECT * FROM Departments WHERE DepartmentID = ?";
+    	$sth = $this->pdo->prepare ($SQL);
+    	$sth->bindParam (1, $id); 
+    	$sth->execute();  
+
+    	$result = $sth->fetch(PDO::FETCH_ASSOC);
+
+    	return $result;
+    } 
+
+    function getProductByID($id) {
+    	$SQL = "SELECT * FROM Products WHERE ProductID = ?";
+    	$sth = $this->pdo->prepare ($SQL);
+    	$sth->bindParam (1, $id); 
+    	$sth->execute();  
+
+    	$result = $sth->fetch(PDO::FETCH_ASSOC);
+
+    	return $result;
+    } 
+
+    function addProduct($name, $price,  $department_id, $notes) {
+    	$SQL = "INSERT INTO Products(Name, Price, DepartmentID, Notes) VALUES(? , ? ,? , ?)";
+    	$result = $this->runQuery($SQL, array($name, $price, $department_id, $notes));
+    	return $result;
     }
 
     function runQuery($sql, $parameters=array()) {

@@ -1,7 +1,6 @@
 <?php 
 	// TODO: Use global variable
-	include("../database/db.php");
-	$db = new Database();
+	include("../header.php");
 	$result = false;
 
 	if(isset( $_GET['id'] ))
@@ -13,4 +12,7 @@
 
 	else
 		echo "Could not be deleted at this time.";
+
+		include("../footer.php");
+
 ?>

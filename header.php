@@ -17,3 +17,11 @@
 		    <![endif]-->
 		  </head>
 <body>
+
+<?php 
+
+session_start();
+include("database/db.php");
+$db = new Database();
+
+ ?>
