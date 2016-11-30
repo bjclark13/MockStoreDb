@@ -1,7 +1,9 @@
 <?php 
 	// TODO: Use global variable
+	include("../database/db.php");
 	$title = "Customers";
-	include("header.php");
+	include("../header.php");
+	$db = new Database();
 
 	$customers = $db->getCustomers(); ?>
 
@@ -13,6 +15,7 @@
 
 	} ?>
 	</ul>
+
 	</div>
 
-<?php include("footer.php"); ?>
+<?php include("../footer.php"); ?>

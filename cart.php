@@ -19,6 +19,8 @@
     	</tr>
   <?php endforeach; ?>
 		</table>
+		<a href="order.php">Confirm Order</a>
+
 	<?php else: 
 		echo "Cart is empty. <a href='products.php'>Continue Shopping</a>";
 

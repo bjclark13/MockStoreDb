@@ -13,7 +13,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- 
 
 CREATE SCHEMA IF NOT EXISTS `MockDatabase` ;
-USE `MockDatabase` ;
+USE `MockDatabase`;
 
 -- -----------------------------------------------------
 -- Table `MockDatabase`.`Departments`
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `MockDatabase`.`CustomerLogins` (
 -- Table `MockDatabase`.`Orders`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `MockDatabase`.`Orders` (
-  `OrderID` INT NOT NULL,
+  `OrderID` INT NOT NULL AUTO_INCREMENT,
   `DatePurchased` DATETIME NOT NULL,
   `Notes` VARCHAR(255) NULL,
   `Fulfilled` TINYINT(0) NOT NULL,

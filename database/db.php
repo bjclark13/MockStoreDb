@@ -49,7 +49,7 @@ class Database {
 	  * @todo incorporate customer logins -- uncomment for transactions
 	  */
     function deleteCustomer($id) {
-  //  	$this->pdo->startTransaction();
+  //  	$this->pdo->beginTransaction();
 
     	$SQL = "DELETE FROM Customers WHERE CustomerID = ? ";
 
@@ -107,6 +107,36 @@ class Database {
     	$result = $this->runQuery($SQL, array($name, $price, $department_id, $notes));
     	return $result;
     }
+
+    function completeOrder($cart) {
+      $SQL = "INSERT INTO orders(DatePurchased) VALUES(now());";
+     
+     try {
+      $this->pdo->beginTransaction();
+      $sth = $this->pdo->prepare ($SQL);
+      $sth->execute(); 
+      $order_id = $this->pdo->lastInsertId();
+
+      foreach($cart as $product_id => $quantity) {
+        $SQL = "INSERT INTO orderdetails(`OrderID`, `ProductID`, `Quantity`) VALUES (?, ? , ?)";
+
+        $sth = $this->pdo->prepare ($SQL);
+        $sth->bindParam (1, $order_id);
+        $sth->bindParam (2, $product_id); 
+        $sth->bindParam (3, $quantity); 
+
+        $sth->execute(); 
+      }
+
+      $this->pdo->commit();
+    }
+
+    catch( PDOException $Exception ) {
+      $this->pdo->rollback();
+      return false;
+    }
+    return true;
+  }
 
     function runQuery($sql, $parameters=array()) {
       // Ensure parameters are in an array
