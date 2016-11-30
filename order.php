@@ -1,4 +1,6 @@
-<?php include("header.php"); 
+<?php $title = "Order"; 
+include("header.php"); 
+
 	if(isset($_SESSION['ShoppingCart'])):
 		$result = $db->completeOrder($_SESSION['ShoppingCart']);
 		if($result) {

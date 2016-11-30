@@ -1,5 +1,5 @@
-<?php include("header.php"); 
-	if(isset($_SESSION['ShoppingCart'])): ?>
+<?php $title = "Cart"; include("header.php");?>
+	<?php if(isset($_SESSION['ShoppingCart'])): ?>
 		<table>
 			<th>Name</th>
 			<th>Price</th>
@@ -12,9 +12,9 @@
      ?>
     	<tr>
     	<td><?php echo $product['Name'];?> </td>
-    	<td><?php echo $product['Price'];?> </td>
+    	<td>$ <?php echo money_format('%i', $product['Price']);?> </td>
     	<td><?php echo $quantity;?> </td>
-    	<td><?php echo $total ;?> </td>
+    	<td>$ <?php echo money_format('%i', $total) ;?> </td>
 
     	</tr>
   <?php endforeach; ?>

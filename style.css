@@ -1,0 +1,48 @@
+.container {
+	padding: 25px;
+}
+.nav {
+	margin-top: 25px;
+}
+.nav li a {
+	color: #a9a9a9;
+	opacity: .6;
+	padding: 15px;
+}
+div.item {
+	background-color: rgba(0,0,0, .6);
+	padding: 15px;
+	margin: 15px auto;
+	color: #d8d8d8;
+}
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #a9a9a9;
+}
+td, th {
+	padding: 15px;
+	text-align: center;
+	border: 1px solid #a9a9a9;
+}
+.nav li a:hover {
+	opacity: 1;
+	background-color: rgba(0,0,0, .6);
+}
+.left-sidebar {
+	background-color: #0c0314;
+	height: 100%;
+	width: 300px;
+	position: fixed;
+	float: left;
+}
+.main-content {
+	background-color: #d8d8d8;
+	float: left;
+	height: auto;
+	min-height: 100vh;
+	position: absolute;
+	left: 300px;
+	width: calc(100% - 300px);
+}

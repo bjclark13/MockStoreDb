@@ -1,5 +1,6 @@
 <?php 
 	// TODO: Use global variable
+	$title = "Customer Delete";
 	include("../header.php");
 	$result = false;
 

@@ -1,5 +1,5 @@
 <?php 
-
+	$title = "Add Customer";
 	include("../header.php");
 
 	if(isset(	$_POST['FName'] ))

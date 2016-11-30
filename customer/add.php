@@ -1,4 +1,4 @@
-<?php include("../header.php"); ?>
+<?php $title="Add a Customer"; include("../header.php"); ?>
 
 <form id="customer-add" action="customer-add.php" method="post">
 

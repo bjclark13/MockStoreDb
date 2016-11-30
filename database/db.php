@@ -80,6 +80,39 @@ class Database {
     	return $result;
     } 
 
+    function getOrders($where = null) {
+      $SQL = "SELECT * FROM Orders ORDER BY DatePurchased";
+     
+      try {
+        $sth = $this->pdo->prepare ($SQL);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+      }
+
+      catch( PDOException $Exception ) {
+        var_dump($Exception);
+        $result = false;
+      }
+      return $result;
+    } 
+
+    function getOrderItems($order_id) {
+      $SQL = "SELECT * FROM orderdetails WHERE OrderID=?";
+      try {
+        $sth = $this->pdo->prepare ($SQL);
+        $sth->bindParam (1, $order_id); 
+        $sth->execute();  
+
+        $result = $sth->fetchAll(PDO::FETCH_ASSOC);   
+      }
+
+      catch( PDOException $Exception ) {
+        var_dump($Exception);
+        $result = false;
+      }
+      return $result;
+    } 
+
     function getDepartmentByID($id) {
     	$SQL = "SELECT * FROM Departments WHERE DepartmentID = ?";
     	$sth = $this->pdo->prepare ($SQL);

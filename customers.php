@@ -4,12 +4,12 @@
 	include("header.php");
 
 	$customers = $db->getCustomers(); ?>
+	<a class="btn btn-default" href="customer/add.php"><i class="fa fa-plus"></i> Add a Customer</a>
 
 	<div class="container">
-	<h1>Customers</h1>
 	<?php foreach($customers as $customer) {
 		// TODO: Add view orders page, edit customer info
-		echo "<li>" . $customer['FName'] . " " . $customer['LName'] . " <a href='customer-delete.php?id=" . $customer['CustomerID'] . "'/> Delete </a></li>";
+		echo "<li>" . $customer['FName'] . " " . $customer['LName'] . " <a href='".$path . "/customer/customer-delete.php?id=" . $customer['CustomerID'] . "'/> Delete </a></li>";
 
 	} ?>
 	</ul>

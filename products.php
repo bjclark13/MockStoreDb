@@ -5,28 +5,22 @@
 
 
 	$products = $db->getProducts(); ?>
-
-	<div class="container">
-	<h1>Products</h1>
-	<ul>
+	<a class="btn btn-default" href="products/add.php"><i class="fa fa-plus"></i> Add a Product</a>
 
 	<?php foreach($products as $product) {
 		// TODO: Add view orders page, edit product info
-		$department = $db->getDepartmentByID(1);
+		$department = $db->getDepartmentByID($product['DepartmentID']);
 
-		echo "<div class='row'> <h2>" . $product['Name'] . "</h2> <h4> Department:  " . $department['Name'] . "</h4>";
+		echo "<div class='item'> <h2>" . $product['Name'] . "</h2> <h4> Department:  " . $department['Name'] . "</h4>";
 
 		if ($product['Notes'])
 			echo "<div class='description'><h3> Description: </h3>" . $product['Notes'] . "</div>";
 
-		echo "<a href='addToCart.php?productID=" . $product['ProductID'] . "' class='btn-primary btn'>Add To Cart</a>";
+		echo "<a href='addToCart.php?productID=" . $product['ProductID'] . "' class='btn-primary btn'>Add To Cart</a> ";
 
 		echo "<a class='btn-primary btn btn-danger' href='product-delete.php?id=" . $product['ProductID'] . "'/> Delete Product </a>";
 		
 		echo "</div>";
 	} ?>
-	</ul>
-
-	</div>
 
 <?php include("footer.php"); ?>
